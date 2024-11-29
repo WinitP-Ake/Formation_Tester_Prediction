@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains Python scripts for developing prototype machine learning models to test the feasibility of predicting the success rate of downhole sample collection. The workflow includes data cleaning, feature engineering, model training, and evaluation with performance visualization.
+This repository contains Python scripts for developing prototype machine learning models aimed at testing the feasibility of predicting the success rate of downhole sample collection. The workflow includes data cleaning, feature engineering, model training, and evaluation with performance visualization.
 
 ## Features
 
@@ -17,14 +17,14 @@ This repository contains Python scripts for developing prototype machine learnin
    - Implements multiple classifiers (e.g., logistic regression, decision trees, gradient boosting).
    - Separates datasets into training and testing sets for model validation.
 4. **Visualization:**
-   - Pair plots and scatter plots of features.
-   - Classification performance visualizations.
-   - Probability plots for feature correlations.
+   - Produce pair plots and scatter plots of features.
+   - Visualize classification performance.
+   - Generate probability plots for analyzing feature correlations.
 5. **Excel Integration:**
    - Exports cleaned and processed data to Excel.
    - Generates formulas for classifier coefficients for use in Excel.
 6. **Cross-Area Performance Evaluation:**
-   - Compares model performance across different geographical zones.
+   - Compares model performance across different geological zones to ensure generalizability.
 
 ## File Structure
 
@@ -38,8 +38,8 @@ This repository contains Python scripts for developing prototype machine learnin
 ## Workflow
 
 1. **Data Cleaning**
-   - Reads well data from CSV/Excel files.
-   - Handles missing values and standardizes columns:
+   - Loads well data from CSV or Excel files.
+   - Handles missing values, standardizes columns, and creates derived features:
      ```python
      merged_table = pd.read_csv(data_path('merged_table_3.csv'))
      test_with_reschart = pd.read_csv(data_path('test_with_reschart.csv'))
@@ -69,13 +69,13 @@ This repository contains Python scripts for developing prototype machine learnin
      ```
 
 3. **Cross-Area Evaluation**
-   - Cross-Zone Performance Testing:
+   - Tests model performance across geological zones:
      ```python
      for train_area in areas_sample.keys():
          for test_area in areas_sample.keys():
              perf_summary = perf.get_perf_summary(classifiers, sample.test_sample)
      ```
-   - Heatmap and Bar Comparison:
+   - Compares results using heatmaps and bar charts:
      ```python
      plot_bar_comparison(perf_summary, benchmark)
      ```
@@ -104,4 +104,4 @@ This repository contains Python scripts for developing prototype machine learnin
 
 ## Future Improvements
 
-- Try linking reservoir information from nearby wells for weighting on prediction.
+- Incorporate reservoir information from nearby wells to introduce a weighting mechanism for predictions.
